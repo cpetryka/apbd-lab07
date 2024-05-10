@@ -1,3 +1,6 @@
+using Tutorial7.Repository;
+using Tutorial7.Repository.Impl;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +10,10 @@ builder.Services.AddSwaggerGen();
 
 // Dodanie kontrolerów
 builder.Services.AddControllers();
+builder.Services.AddScoped<IWarehouseRepository, WarehouseRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IProductWarehouseRepository, ProductWarehouseRepository>();
 
 var app = builder.Build();
 
